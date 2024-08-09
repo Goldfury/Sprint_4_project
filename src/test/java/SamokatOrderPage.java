@@ -12,7 +12,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-@RunWith(Parameterized.class)
+//@RunWith(Parameterized.class)
 public class SamokatOrderPage {
 
     private WebDriver driver;
@@ -40,9 +40,6 @@ public class SamokatOrderPage {
 
     private By commentForCourier = By.xpath("//input[contains(@placeholder, 'Комментарий для курьера')]");
 
-    //Локатор для кнопки назад в форме заказа
-    private By previousFormButton = By.className("Button_Inverted__3IF-i");
-
     //Локатор для кнопки далее в форме заказа
     private By nextFormButton = By.xpath("//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM' and text()='Далее']");
 
@@ -57,48 +54,36 @@ public class SamokatOrderPage {
         this.driver = driver;
     }
 
-    private String name;
-    private String surname;
-    private String address;
-    private String phoneNumber;
-    private String date;
-    private String comment ;
-
-    public SamokatOrderPage(WebDriver driver, String name, String surname, String address, String phoneNumber, String date, String comment) {
-        this.driver = driver;
-        this.name = name;
-        this.surname = surname;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
-        this.date = date;
-        this.comment = comment;
-    }
-
-    // Тестовые данные
-    @Parameterized.Parameters
-    public static Object[][] getCredentials() {
-        return new Object[][] {
-                { "Акылбек", "Акылбек", "Астана", "87055463022", "21.07.2001", "Классный самокат" },
-                { "Нурсултан", "Арманов", "Алматы", "87073332211", "21.04.1995", "что то новое"},
-        };
-    }
 
 
+//    public SamokatOrderPage(WebDriver driver, String name, String surname, String address, String phoneNumber, String date, String comment) {
+//        this.name = name;
+//        this.surname = surname;
+//        this.address = address;
+//        this.phoneNumber = phoneNumber;
+//        this.date = date;
+//        this.comment = comment;
+//    }
+//
+//    // Тестовые данные
+//    @Parameterized.Parameters
+//    public static Object[][] getCredentials() {
+//        return new Object[][] {
+//                { "Акылбек", "Акылбек", "Астана", "87055463022", "21.07.2001", "Классный самокат" },
+//                { "Нурсултан", "Арманов", "Алматы", "87073332211", "21.04.1995", "что то новое"},
+//        };
+//    }
 
-
-    //Проверка что в хедере кнопка заказа работает
-    public void clickHeaderMakeOrderButton(){
-        driver.findElement(headerMakeOrderButton).click();
-    }
+    private String name = "Акылбек";
+    private String surname = "Акылбек";
+    private String address = "Астана";
+    private String phoneNumber = "87055463022";
+    private String date = "21.07.2001";
+    private String comment = "Классный самокат" ;
 
     //заполнение формы заказа
-    @Test
     public void fillSamokatOrderForm(){
-        driver = new ChromeDriver();
-        // перешли на страницу тестового приложения
-        //тест работает но не дошло до страницы подтверждения заказа
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        clickHeaderMakeOrderButton();
+        driver.findElement(headerMakeOrderButton).click();
         driver.findElement(nameField).sendKeys(name);
         driver.findElement(surnameField).sendKeys(surname);
         driver.findElement(addressField).sendKeys(address);
