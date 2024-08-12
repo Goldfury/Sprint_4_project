@@ -41,6 +41,7 @@ public class Praktikum {
         };
     }
 
+    //тут проверяется код с параметризацией
     @Test
     public void praktikumTest() {
             driver = new ChromeDriver();
@@ -68,6 +69,7 @@ public class Praktikum {
         driver.findElement(By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")).click();
     }
 
+    //тут просто проверяется код на заказ
     @Test
     public void createOrder() {
         // создали драйвер для браузера Chrome

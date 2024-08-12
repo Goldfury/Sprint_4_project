@@ -106,6 +106,7 @@ public class SamokatOrderPage {
         driver.findElement(confirmOrderButton).click();
     }
 
+    //проверка большой кнопки в body
     public void checkBigOrderButton(){
         WebElement element = driver.findElement(bigMakeOrderButton);
         ((JavascriptExecutor)driver).executeScript("arguments[0].scrollIntoView();", element);

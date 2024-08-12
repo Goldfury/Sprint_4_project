@@ -45,6 +45,7 @@ public class SamokatHomePageTest {
         this.driver = driver;
     }
 
+    //проверяет каждый текст
     public void accordionTextComparison() {
         driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
         compareFirstPanel();
