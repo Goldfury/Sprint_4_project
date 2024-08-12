@@ -17,37 +17,37 @@ public class SamokatOrderPage {
 
     private WebDriver driver;
     //локаторы для кнопок
-    private By headerMakeOrderButton = By.xpath("//button[@class= 'Button_Button__ra12g']");
-    private By bigMakeOrderButton = By.xpath("//div[@class='Home_FinishButton__1_cWm']/button");
+    private final By headerMakeOrderButton = By.xpath("//button[@class= 'Button_Button__ra12g']");
+    private final By bigMakeOrderButton = By.xpath("//div[@class='Home_FinishButton__1_cWm']/button");
 
     // локаторы для полей персональных данных для заказа
-    private By nameField = By.xpath("//input[@placeholder='* Имя']");
-    private By surnameField = By.xpath("//input[@placeholder='* Фамилия']");
-    private By addressField = By.xpath("//input[contains(@placeholder, 'куда')]");
+    private final By nameField = By.xpath("//input[@placeholder='* Имя']");
+    private final By surnameField = By.xpath("//input[@placeholder='* Фамилия']");
+    private final By addressField = By.xpath("//input[contains(@placeholder, 'куда')]");
         //Выпадающий список с метро
-    private By deliveryAddressField = By.xpath("//input[@placeholder = '* Станция метро']");
-    private By deliveryAddressFieldOption = By.cssSelector(".Order_SelectOption__82bhS.select-search__option");
-    private By phoneNumberField = By.xpath("//input[contains(@placeholder, 'курьер')]");
+    private final By deliveryAddressField = By.xpath("//input[@placeholder = '* Станция метро']");
+    private final By deliveryAddressFieldOption = By.cssSelector(".Order_SelectOption__82bhS.select-search__option");
+    private final By phoneNumberField = By.xpath("//input[contains(@placeholder, 'курьер')]");
 
     //локаторы для второй части заказа
-    private By deliverDateField = By.xpath("//input[contains(@placeholder, '* Когда привезти самокат')]");
+    private final By deliverDateField = By.xpath("//input[contains(@placeholder, '* Когда привезти самокат')]");
         //Количество дней аренды
-    private By rentDaysField = By.className("Dropdown-placeholder");
-    private By rentDaysFieldDropdownOption = By.className("Dropdown-option");
+    private final By rentDaysField = By.className("Dropdown-placeholder");
+    private final By rentDaysFieldDropdownOption = By.className("Dropdown-option");
     //Локатор для выбора цвета самоката
-    private By blackSamokat = By.xpath("//label[@for = 'black']");
-    private By greySamokat = By.xpath("//label[@for = 'grey']");
+    private final By blackSamokat = By.xpath("//label[@for = 'black']");
+    private final By greySamokat = By.xpath("//label[@for = 'grey']");
 
-    private By commentForCourier = By.xpath("//input[contains(@placeholder, 'Комментарий для курьера')]");
+    private final By commentForCourier = By.xpath("//input[contains(@placeholder, 'Комментарий для курьера')]");
 
     //Локатор для кнопки далее в форме заказа
-    private By nextFormButton = By.xpath("//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM' and text()='Далее']");
+    private final By nextFormButton = By.xpath("//button[@class = 'Button_Button__ra12g Button_Middle__1CSJM' and text()='Далее']");
 
     //Локатор для кнопки заказа
-    private By makeOrderFormButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']");
+    private final By makeOrderFormButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Заказать']");
 
     //Локатор кнопки для подтверждения заказа
-    private By confirmOrderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
+    private final By confirmOrderButton = By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']");
 
 
     public SamokatOrderPage(WebDriver driver){
