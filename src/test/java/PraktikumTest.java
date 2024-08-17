@@ -10,9 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+import java.util.concurrent.TimeUnit;
 
 @RunWith(Parameterized.class)
-public class Praktikum {
+public class PraktikumTest {
 
     private WebDriver driver;
 
@@ -22,8 +23,9 @@ public class Praktikum {
     private final String phoneNumber;
     private final String date;
     private final String comment;
+    private final String url = "https://qa-scooter.praktikum-services.ru/";
 
-        public Praktikum(String name, String surname, String address, String phoneNumber, String date, String comment) {
+        public PraktikumTest(String name, String surname, String address, String phoneNumber, String date, String comment) {
         this.name = name;
         this.surname = surname;
         this.address = address;
@@ -41,10 +43,11 @@ public class Praktikum {
         };
     }
 
+    //тут проверяется код с параметризацией
     @Test
     public void praktikumTest() {
             driver = new ChromeDriver();
-            driver.get("https://qa-scooter.praktikum-services.ru/");
+            driver.get(url);
         driver.findElement(By.xpath("//button[@class= 'Button_Button__ra12g']")).click();
         driver.findElement(By.xpath("//input[@placeholder='* Имя']")).sendKeys(name);
         driver.findElement(By.xpath("//input[@placeholder='* Фамилия']")).sendKeys(surname);
@@ -68,20 +71,18 @@ public class Praktikum {
         driver.findElement(By.xpath("//button[@class='Button_Button__ra12g Button_Middle__1CSJM' and text()='Да']")).click();
     }
 
+    //тут просто проверяется код на заказ
     @Test
     public void createOrder() {
         // создали драйвер для браузера Chrome
-//        ChromeOptions options = new ChromeOptions();
-//        options.addArguments("--no-sandbox", "--headless", "--disable-dev-shm-usage");
-//        driver = new ChromeDriver(options);
         driver = new ChromeDriver();
         // перешли на страницу тестового приложения
         //тест работает но не дошло до страницы подтверждения заказа
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(url);
         SamokatOrderPage objSamokatOrderPage = new SamokatOrderPage(driver);
         objSamokatOrderPage.fillSamokatOrderForm();
         //Проверка которая должна сломаться так как в Хроме не выходит что Заказ оформлен
-        String confirmText = driver.findElement(By.xpath("//div[@class = 'Order_ModalHeader__3FDaJ']")).getText();
+        String confirmText = objSamokatOrderPage.getConfirmOrderText();
         String expected = "Заказ оформлен";
         Assert.assertEquals("Окно подтверждения заказа не открылось", expected, confirmText);
     }
@@ -90,18 +91,26 @@ public class Praktikum {
     @Test
     public void checkBigOrderbutton(){
         driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
-        SamokatOrderPage objSamokatOrderPage = new SamokatOrderPage(driver);
-        objSamokatOrderPage.checkBigOrderButton();
+        driver.get(url);
+        SamokatHomePageTest objSamokatHomePageTest = new SamokatHomePageTest(driver);
+        objSamokatHomePageTest.checkBigOrderButton();
     }
 
     @Test
     //Проверка Выпадающего список в разделе «Вопросы о важном». в самом в методе вставлена 8 методов которые проверяют каждую кнопку
     public void checkTextInDropdown(){
         driver = new ChromeDriver();
-        driver.get("https://qa-scooter.praktikum-services.ru/");
+        driver.get(url);
         SamokatHomePageTest objSamokatHomePageTest = new SamokatHomePageTest(driver);
-        objSamokatHomePageTest.accordionTextComparison();
+        driver.manage().timeouts().implicitlyWait(3, TimeUnit.SECONDS);
+        objSamokatHomePageTest.compareFirstPanel();
+        objSamokatHomePageTest.compareSecondPanel();
+        objSamokatHomePageTest.compareThirdPanel();
+        objSamokatHomePageTest.compareFourthPanel();
+        objSamokatHomePageTest.compareFifthPanel();
+        objSamokatHomePageTest.compareSixthPanel();
+        objSamokatHomePageTest.compareSeventhPanel();
+        objSamokatHomePageTest.compareEighthPanel();
 
     }
 
